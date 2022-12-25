@@ -2146,6 +2146,7 @@ MonoBehaviour:
   obstaclePrefabs: {fileID: 1245435645037764, guid: c146c4e9728549d49acf16ab2faffc86,
     type: 3}
   offset: 0.5
+  previousPipe: {fileID: 0}
 --- !u!61 &1991070511
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -40,20 +40,20 @@ public class PlayerController : MonoBehaviour {
 					GameManager.Instance.GetReady ();
 					GetComponent<Animator>().speed = 2;
 				}
-				playerRigid.gravityScale = 1f;
-				tiltSmooth = minTiltSmooth;
+				// playerRigid.gravityScale = 1f;
+				// tiltSmooth = minTiltSmooth;
 				transform.rotation = upRotation;
-				playerRigid.velocity = Vector2.zero;
-				// Push the player upwards
-				playerRigid.AddForce (Vector2.up * thrust);
-				SoundManager.Instance.PlayTheAudio("Flap");
+				// playerRigid.velocity = Vector2.zero;
+				// // Push the player upwards
+				// playerRigid.AddForce (Vector2.up * thrust);
+				// SoundManager.Instance.PlayTheAudio("Flap");
 			}
 		}
-		if (playerRigid.velocity.y < -1f) {
-			// Increase gravity so that downward motion is faster than upward motion
-			tiltSmooth = maxTiltSmooth;
-			playerRigid.gravityScale = 2f;
-		}
+		// if (playerRigid.velocity.y < -1f) {
+		// 	// Increase gravity so that downward motion is faster than upward motion
+		// 	tiltSmooth = maxTiltSmooth;
+		// 	playerRigid.gravityScale = 2f;
+		// }
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
