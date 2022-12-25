@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField] private float thrust, minTiltSmooth, maxTiltSmooth, hoverDistance, hoverSpeed;
+	public float downSpeed;
+	public float upSpeed;
+	public float maxDownSpeed;
+	public float maxUpSpeed;
 	private bool start;
 	private float timer, tiltSmooth, y;
 	private Rigidbody2D playerRigid;
@@ -29,6 +33,8 @@ public class PlayerController : MonoBehaviour {
 		}
 		// Limit the rotation that can occur to the player
 		transform.rotation = new Quaternion (transform.rotation.x, transform.rotation.y, Mathf.Clamp (transform.rotation.z, downRotation.z, upRotation.z), transform.rotation.w);
+
+		transform.position = new Vector2(transform.position.x, transform.position.y + downSpeed * Time.deltaTime);
 	}
 
 	void LateUpdate () {
@@ -47,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 				// // Push the player upwards
 				// playerRigid.AddForce (Vector2.up * thrust);
 				// SoundManager.Instance.PlayTheAudio("Flap");
+				downSpeed += upSpeed;
 			}
 		}
 		// if (playerRigid.velocity.y < -1f) {
@@ -54,6 +61,10 @@ public class PlayerController : MonoBehaviour {
 		// 	tiltSmooth = maxTiltSmooth;
 		// 	playerRigid.gravityScale = 2f;
 		// }
+
+		downSpeed -= 0.3f;
+		if(downSpeed < maxDownSpeed) downSpeed = maxDownSpeed;
+		if(downSpeed > maxUpSpeed) downSpeed = maxUpSpeed;
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {

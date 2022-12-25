@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour {
 		// Create one amongst the 3 players
 		flappy = Instantiate (playerPrefabs[Random.Range (0, playerPrefabs.Length)], playerPos.position, transform.rotation);
 		flappy.transform.parent = playerPos;
+		var playerCtr = flappy.GetComponent<PlayerController>();
+		playerCtr.downSpeed = -0.15f;
+		playerCtr.upSpeed = 10f;
+		playerCtr.maxDownSpeed = -5f;
+		playerCtr.maxUpSpeed = 10;
+
 		// Use one amongst the 2 Backgrounds
 		background.sprite = backgroundImage[Random.Range (0, backgroundImage.Length)];
 	}
