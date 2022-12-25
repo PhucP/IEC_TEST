@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleBehaviour : MonoBehaviour {
 	
 	[SerializeField] private float moveSpeed;
+	public int colIndex;
 
 	void Update () {
 		if(GameManager.Instance.GameState()){
