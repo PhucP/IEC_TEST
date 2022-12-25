@@ -13,12 +13,16 @@ public class PlayerController : MonoBehaviour {
 	private float timer, tiltSmooth, y;
 	private Rigidbody2D playerRigid;
 	private Quaternion downRotation, upRotation;
+	private List<Color> listColor = new List<Color>{Color.cyan, Color.gray, Color.magenta};
+	private System.Random rand = new System.Random();
 
 	void Start () {
 		tiltSmooth = maxTiltSmooth;
 		playerRigid = GetComponent<Rigidbody2D> ();
 		downRotation = Quaternion.Euler (0, 0, -90);
 		upRotation = Quaternion.Euler (0, 0, 35);
+
+		this.GetComponent<SpriteRenderer>().color = listColor[rand.Next(0, listColor.Count)];
 	}
 
 	void Update () {
